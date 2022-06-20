@@ -1,0 +1,12 @@
+---
+- name: Converge
+  hosts: all
+  pre_tasks:
+    - name: Update repositories cache
+      package:
+        update_cache: yes
+
+  tasks:
+    - name: "Include fabiokleis.postfix_example"
+      include_role:
+        name: "postfix_example"

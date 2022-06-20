@@ -1,0 +1,11 @@
+---
+# handlers file for postfix_example
+- name: Restart postfix
+  service:
+    name: postfix
+    state: restarted
+
+- name: Restart saslauthd
+  service:
+    name: saslauthd
+    state: restarted

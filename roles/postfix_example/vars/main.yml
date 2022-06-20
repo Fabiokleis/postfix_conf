@@ -1,0 +1,5 @@
+---
+# vars file for postfix_example
+mechanisms: "plain, login"
+relay_host: "smtp.gmail.com"
+cyrus_conf: "/etc/sasl2/smtpd.conf"

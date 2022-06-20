@@ -1,0 +1,8 @@
+all:
+  hosts:
+    node01.sysadmin.example:
+    node02.sysadmin.example:
+  children:
+    postfix_example:
+      hosts:
+        node01.sysadmin.example:

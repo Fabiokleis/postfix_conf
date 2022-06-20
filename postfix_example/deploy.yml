@@ -1,0 +1,11 @@
+---
+- name: Apply postfix example
+  hosts: postfix_example
+  become: yes
+  pre_tasks:
+    - name: Update repositories cache
+      package:
+        update_cache: yes
+
+  roles:
+    - role: postfix_example

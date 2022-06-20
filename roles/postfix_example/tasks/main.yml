@@ -1,0 +1,21 @@
+---
+# tasks file for postfix_example
+- name: Install all packages to use cyrus-sasl and swaks to test postfix
+  apt:
+    name: 
+      - libsasl2-2
+      - sasl2-bin  
+      - libsasl2-modules
+      - swaks
+    state: present
+    update_cache: yes
+  notify:
+    - Restart saslauthd
+    - Restart postfix
+
+#
+#- name: Insert mechanisms and method to check passwords in cyrus-sasl
+#  lineinfile:
+#    path: {cyrus_conf}
+#    search_string: "pwcheck_method: "
+#    line: 
