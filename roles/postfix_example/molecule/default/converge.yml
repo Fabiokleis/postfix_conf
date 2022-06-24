@@ -6,7 +6,11 @@
     - vars.yml
 
   vars:
-    optional_vars_file: "{{ lookup('first_found', '~/secrets.yml', errors='ignore') }}"
+    vault_vars_file: "{{ lookup('first_found', '~/secrets.yml', errors='ignore') }}"
+    postfix_raw_options:
+      - "smtpd_relay_restrictions = permit_sasl_authenticated, permit_mynetworks, reject_unauth_destination"
+      - "smtp_tls_CAfile = /etc/ssl/certs/ca-certificates.crt"
+      - "smtp_tls_security_level = encrypt"
 
   pre_tasks:
     - name: Update repositories cache
@@ -14,9 +18,9 @@
         update_cache: yes
 
   tasks:
-    - name: optional_vars_file
-      include_vars: "{{ optional_vars_file }}"
-      when: optional_vars_file is file
+    - name: include vault_vars_file
+      include_vars: "{{ vault_vars_file }}"
+      when: vault_vars_file is file
     - name: "Include fabiokleis.postfix_example"
       include_role:
         name: "postfix_example"

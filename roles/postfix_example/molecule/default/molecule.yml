@@ -5,7 +5,7 @@ driver:
   name: docker
 platforms:
   - name: postfixtest
-    image: "geerlingguy/docker-debian9-ansible:latest"
+    image: "geerlingguy/docker-debian10-ansible:latest"
     volumes:
       - /sys/fs/cgroup:/sys/fs/cgroup:ro
     command: ""
@@ -15,7 +15,8 @@ provisioner:
   name: ansible
   config_options:
     defaults:
-      ask_vault_pass: true
+      vault_password_file: ~/.vault
+      #ask_vault_pass: true
 verifier:
   name: ansible
 lint: |

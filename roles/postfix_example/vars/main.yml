@@ -1,5 +1,7 @@
 ---
 # vars file for postfix_example
+smtpd_sasl_dir: "/etc/postfix/sasl"
+mech_list: "PLAIN LOGIN"
+pwcheck_method: "saslauthd"
 mechanisms: "plain, login"
 relay_host: "smtp.gmail.com"
-cyrus_conf: "/etc/sasl2/smtpd.conf"
