@@ -1,0 +1,4 @@
+---
+# vars file for postfix example
+user: "{{ vault_user }}"
+password: "{{ vault_password }}"

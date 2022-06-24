@@ -13,6 +13,9 @@ platforms:
     pre_build_image: true
 provisioner:
   name: ansible
+  config_options:
+    defaults:
+      ask_vault_pass: true
 verifier:
   name: ansible
 lint: |
