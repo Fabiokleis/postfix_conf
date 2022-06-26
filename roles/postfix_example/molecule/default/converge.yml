@@ -1,6 +1,7 @@
 ---
 - name: Converge
   hosts: all
+  become: yes
 
   vars_files:
     - vars.yml
@@ -11,6 +12,7 @@
       - "smtpd_relay_restrictions = permit_sasl_authenticated, permit_mynetworks, reject_unauth_destination"
       - "smtp_tls_CAfile = /etc/ssl/certs/ca-certificates.crt"
       - "smtp_tls_security_level = encrypt"
+      - "cyrus_sasl_config_path = /etc/postfix/sasl"
 
   pre_tasks:
     - name: Update repositories cache
