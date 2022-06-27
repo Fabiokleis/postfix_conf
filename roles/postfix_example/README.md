@@ -51,6 +51,7 @@ test_password: "senha criada no mkpasswd para testes"
 `server_port: "25"`
 
 4. Aplique e rode a verificação
+
 `molecule converge` # para subir o container e aplicar a role
 
 `molecule verify` # para rodar os testes dentro do arquivo verify.yml
