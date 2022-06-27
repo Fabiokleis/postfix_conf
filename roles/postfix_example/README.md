@@ -22,7 +22,16 @@ Role Variables
 
 Test
 ---
-`molecule converge` # to up a docker container and apply the role contents
+1. crie o arquivo ~/secrets.yml e depois aplique a encprytacao com ansible-vault encrypt ~/secrets.yml
+```
+user: "usuario_sasl_passwd@gmail.com"
+password: "senha gerada nas configuracoes de seguranca do gmail"
+mailtester_password: "crie uma hash com mkpasswd --method=sha-512 e copie aqui"
+```
+
+`molecule converge` # para subir o container e aplicar a role
+
+`molecule verify` # para rodar os testes dentro do arquivo verify.yml
 
 License
 -------
