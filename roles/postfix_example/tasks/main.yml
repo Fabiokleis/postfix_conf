@@ -38,11 +38,10 @@
     password: "{{ mailtester_password }}"
     state: present
 
-- name: Set socket path to communicate between saslauthd instance and Postfix in chroot
-  shell: |
-    rm -rf /run/saslauthd
-    ln -sf {{ chroot_dir }} /run/saslauthd
-    dpkg-statoverride --force --add root sasl 710 {{ chroot_dir }}
+- name: Setup a sepate saslauthd process to be used from Postfix
+  template:
+    src: saslauthd-postfix.j2
+    dest: "{{ saslauthd_default_path }}/saslauthd-postfix"
   notify:
     - Restart saslauthd
     - Restart postfix
