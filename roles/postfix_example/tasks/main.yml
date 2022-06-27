@@ -35,6 +35,7 @@
 - name: Add user to send test mails
   user:
     name: mailtester
+    password: "{{ mailtester_password }}"
     state: present
 
 - name: Set socket path to communicate between saslauthd instance and Postfix in chroot

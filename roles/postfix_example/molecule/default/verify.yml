@@ -4,3 +4,36 @@
 - name: Verify
   hosts: all
   gather_facts: false
+  become: true
+
+  vars_files:
+    - vars.yml
+
+  vars:
+    vault_vars_file: "{{ lookup('first_found', '~/secrets.yml', errors='ignore') }}"
+
+  tasks:
+    - name: include vault_vars_file
+      include_vars: "{{ vault_vars_file }}"
+      when: vault_vars_file is file
+
+    - name: Test saslauthd with authorized user
+      shell: |
+        swaks --server "{{ postfix_server }}" --port "{{ server_port }}" --to "{{ mail }}" --auth "{{ auth }}" --auth-user "{{ auth_user }}" --auth-password "{{ test_password }}"
+      register: result_mail
+
+    - name: show content of test
+      debug: 
+        var: result_mail.stdout_lines
+
+    - name: Test saslauthd with not authorized user
+      shell: |
+        swaks --server "{{ postfix_server }}" --port "{{ server_port }}" --to "{{ mail }}" --auth "{{ auth }}" --auth-user "random_user" --auth-password "random_password"
+      register: result_mail
+      failed_when: "'FAILED' in result_mail.stderr"
+
+    - name: show content of test
+      debug: 
+        var: result_mail.stdout_lines
+
+
