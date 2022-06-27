@@ -14,8 +14,6 @@ Role Variables
  
  `mechanisms`: tipo de autenticacao para o sasl com postfix - smtpd
  
- `relay_host`: configuracao de relay para o postfix
- 
  `smtpd_sasl_dir`: local onde fica o arquivo stmpd.conf pro sasl
  
  `pwcheck`: metodo de autenticacao 
@@ -24,7 +22,6 @@ Role Variables
  
  `relay_host`: servidor que o postfix irá utilizar como relay
  
- `smtpd_sasl_dir`: caminho onde fica o arquivo smtpd
 
 Test
 ---
