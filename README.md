@@ -5,6 +5,7 @@ Run
 ```
 user: "usuario_sasl_passwd@gmail.com"
 password: "senha gerada nas configuracoes de seguranca do gmail"
+mailtester_name: "nome do auth user que será criado"
 mailtester_password: "crie uma hash com mkpasswd --method=sha-512 e copie aqui"
 test_password: "senha criada no mkpasswd para testes" # crie caso teste com molecule
 ```
