@@ -53,7 +53,7 @@ test_password: "senha criada no mkpasswd para testes"
 
  `auth: "plain"` # metodo para autenticar
 
- `auth_user: "mailtester"` # nome do usuario padrao para autenticacao
+ `mailtester_name: "mailtester"` # nome do usuario padrao para autenticacao
  
  `server_port: "25"` # porta aberta no container
 
