@@ -20,11 +20,6 @@
     - Restart saslauthd
     - Restart postfix
 
-- name: Setup a sepate saslauthd process to be used from Postfix
-  template:
-    src: saslauthd-postfix.j2
-    dest: "{{ saslauthd_default_path }}/saslauthd-postfix"
-
 - name: Add postfix user to sasl
   user:
     name: postfix
@@ -38,7 +33,7 @@
     password: "{{ mailtester_password }}"
     state: present
 
-- name: Setup a sepate saslauthd process to be used from Postfix
+- name: Setup a separate saslauthd process to be used from Postfix
   template:
     src: saslauthd-postfix.j2
     dest: "{{ saslauthd_default_path }}/saslauthd-postfix"
