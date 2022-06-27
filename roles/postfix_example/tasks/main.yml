@@ -8,11 +8,9 @@
       - git
       - net-tools
       - dnsutils
+      - telnet
     state: present
     update_cache: yes
-  notify:
-    - Restart saslauthd
-    - Restart postfix
 
 - name: Create a smtpd configuration to postfix sasl
   template:
@@ -30,13 +28,20 @@
 - name: Add postfix user to sasl
   user:
     name: postfix
-    group: sasl
+    groups: sasl
+    append: yes
+    state: present
 
-- name: Set socket path to communicate between saslauthd instance and Postfix
+- name: Add user to send test mails
+  user:
+    name: mailtester
+    state: present
+
+- name: Set socket path to communicate between saslauthd instance and Postfix in chroot
   shell: |
-    rm /run/saslauthd
-    ln -s {{ chroot_dir }} /run/saslauthd
-    dpkg-statoverride --add root sasl 710 {{ chroot_dir }}
+    rm -rf /run/saslauthd
+    ln -sf {{ chroot_dir }} /run/saslauthd
+    dpkg-statoverride --force --add root sasl 710 {{ chroot_dir }}
   notify:
     - Restart saslauthd
     - Restart postfix

@@ -9,10 +9,14 @@
   vars:
     vault_vars_file: "{{ lookup('first_found', '~/secrets.yml', errors='ignore') }}"
     postfix_raw_options:
-      - "smtpd_relay_restrictions = permit_sasl_authenticated, permit_mynetworks, reject_unauth_destination"
+      - "smtpd_recipient_restrictions = permit_sasl_authenticated, permit_mynetworks, reject_unauth_destination"
       - "smtp_tls_CAfile = /etc/ssl/certs/ca-certificates.crt"
       - "smtp_tls_security_level = encrypt"
       - "cyrus_sasl_config_path = /etc/postfix/sasl"
+      - "broken_sasl_auth_clients = yes"
+      - "smtpd_sasl_auth_enable = yes"
+      - "smtpd_sasl_security_options = noanonymous"
+      - "smtpd_sasl_local_domain = $myhostname"
 
   pre_tasks:
     - name: Update repositories cache
