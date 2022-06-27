@@ -19,7 +19,7 @@
 
     - name: Test saslauthd with authorized user
       shell: |
-        swaks --server "{{ postfix_server }}" --port "{{ server_port }}" --to "{{ mail }}" --auth "{{ auth }}" --auth-user "{{ auth_user }}" --auth-password "{{ test_password }}"
+        swaks --server "{{ postfix_server }}" --port "{{ server_port }}" --to "{{ mail }}" --auth "{{ auth }}" --auth-user "{{ mailtester_name }}" --auth-password "{{ test_password }}"
       register: result_mail
 
     - name: show content of test

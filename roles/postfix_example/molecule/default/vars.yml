@@ -2,11 +2,11 @@
 # vars file for postfix example
 user: "{{ vault_user }}"
 password: "{{ vault_password }}"
+mailtester_name: "{{ vault_mailtester_name }}"
 mailtester_password: "{{ vault_mailtester_password }}"
 test_password: "{{ vault_test_password }}"
 postfix_server: "postfixtest"
 mail: "fabiohkrc@gmail.com"
 auth: "plain"
-auth_user: "mailtester"
 server_port: "25"
 

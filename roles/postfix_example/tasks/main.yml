@@ -34,7 +34,7 @@
 
 - name: Add user to send test mails
   user:
-    name: mailtester
+    name: "{{ mailtester_name }}"
     password: "{{ mailtester_password }}"
     state: present
 
@@ -46,3 +46,5 @@
   notify:
     - Restart saslauthd
     - Restart postfix
+    - Restart postmap
+

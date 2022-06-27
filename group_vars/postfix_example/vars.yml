@@ -2,5 +2,6 @@
 # vars file for postfix_example
 user: "{{ vault_user }}"
 password: "{{ vault_password }}"
+mailtester_name: "{{ vault_mailtester_name }}"
 mailtester_password: "{{ vault_mailtester_password }}"
 test_password: "{{ vault_test_password }}"

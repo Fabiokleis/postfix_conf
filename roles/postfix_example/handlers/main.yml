@@ -9,3 +9,8 @@
   service:
     name: saslauthd
     state: restarted
+
+- name: Restart postmap
+  shell: |
+    sudo chown postfix /etc/postfix
+    postmap /etc/postfix/sasl_passwd
