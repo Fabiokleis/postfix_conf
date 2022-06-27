@@ -10,7 +10,9 @@ Requirements
 Role Variables
 --------------
 
- `mechanisms`: tipos de authenticacao para o sasl
+ `mech_list`: metodos de autenticacao para o postfix
+ 
+ `mechanisms`: tipo de autenticacao para o sasl com postfix - smtpd
  
  `relay_host`: configuracao de relay para o postfix
  
@@ -19,6 +21,10 @@ Role Variables
  `pwcheck`: metodo de autenticacao 
  
  `saslauthd_default_path`: caminho onde fica o arquivo de instancia do saslauthd
+ 
+ `relay_host`: servidor que o postfix irá utilizar como relay
+ 
+ `smtpd_sasl_dir`: caminho onde fica o arquivo smtpd
 
 Test
 ---
@@ -32,29 +38,29 @@ test_password: "senha criada no mkpasswd para testes"
 
 2. verifique o arquivo molecule.yml e modifique a opcao `config_options`, coloque um arquivo com a senha do ansible-vault utilizada para encrytar o secrets.yml ou coloque para pedir a senha
 
-`vault_password_file: ~/.vault` # caminho para o arquivo com a senha
+ `vault_password_file: ~/.vault` # caminho para o arquivo com a senha
 
-`ask_vault_pass: true` # coloque a senha durante a execuçao
+ `ask_vault_pass: true` # coloque a senha durante a execuçao
 
 3. variaveis do molecule
 
-`test_password: "{{ vault_test_password }}"`
+ `test_password: "{{ vault_test_password }}"` # senha para testar a autenticacao
 
-`postfix_server: "postfixtest"`
+ `postfix_server: "postfixtest"` # nome do servidor smtp
 
-`mail: "coloque um email de testes"`
+ `mail: "coloque um email de testes"` # endereço de email que será enviado
 
-`auth: "plain"`
+ `auth: "plain"` # metodo para autenticar
 
-`auth_user: "mailtester"`
-
-`server_port: "25"`
+ `auth_user: "mailtester"` # nome do usuario padrao para autenticacao
+ 
+ `server_port: "25"` # porta aberta no container
 
 4. Aplique e rode a verificação
 
-`molecule converge` # para subir o container e aplicar a role
+ `molecule converge` # para subir o container e aplicar a role
 
-`molecule verify` # para rodar os testes dentro do arquivo verify.yml
+ `molecule verify` # para rodar os testes dentro do arquivo verify.yml
 
 License
 -------
