@@ -34,7 +34,7 @@ mailtester_password: "crie uma hash com mkpasswd --method=sha-512 e copie aqui"
 test_password: "senha criada no mkpasswd para testes"
 ```
 
-2. verifique o arquivo molecule.yml e modifique a opcao `config_options`, coloque um arquivo com a senha do ansible-vault utilizada para encrytar o secrets.yml ou coloque para pedir a senha
+2. verifique o arquivo molecule.yml e modifique a opcao `config_options`, coloque um arquivo com a senha do ansible-vault utilizada para encryptar o secrets.yml ou coloque para pedir a senha
 
  `vault_password_file: ~/.vault` # caminho para o arquivo com a senha
 
