@@ -33,7 +33,7 @@
     password: "{{ mailtester_password }}"
     state: present
 
-- name: Setup a separate saslauthd process to be used from Postfix
+- name: Setup a separated saslauthd process to be used from Postfix
   template:
     src: saslauthd-postfix.j2
     dest: "{{ saslauthd_default_path }}/saslauthd-postfix"
