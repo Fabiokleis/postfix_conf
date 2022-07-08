@@ -1,6 +1,6 @@
 Run
 ---
-1. crie o arquivo secrets.yml e depois encryte com ansible-vault encrypt secrets.yml
+1. crie o arquivo secrets.yml e depois encrypte com ansible-vault encrypt secrets.yml
 
 ```
 user: "usuario_sasl_passwd@gmail.com"
