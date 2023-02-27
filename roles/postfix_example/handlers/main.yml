@@ -4,11 +4,13 @@
   service:
     name: postfix
     state: restarted
+    enabled: true
 
 - name: Restart saslauthd
   service:
     name: saslauthd
     state: restarted
+    enabled: true
 
 - name: Restart postmap
   shell: |
